@@ -447,6 +447,6 @@ public interface HelloApiPrx extends com.zeroc.Ice.ObjectPrx
 
     static String ice_staticId()
     {
-        return "::org::tombear::rpcice::simple::hello::gen::HelloApi";
+        return "::gen::HelloApi";
     }
 }

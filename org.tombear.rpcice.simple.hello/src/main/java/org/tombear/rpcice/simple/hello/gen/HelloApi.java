@@ -33,7 +33,7 @@ public interface HelloApi extends com.zeroc.Ice.Object
     static final String[] _iceIds =
     {
         "::Ice::Object",
-        "::org::tombear::rpcice::simple::hello::gen::HelloApi"
+        "::gen::HelloApi"
     };
 
     @Override
@@ -50,7 +50,7 @@ public interface HelloApi extends com.zeroc.Ice.Object
 
     static String ice_staticId()
     {
-        return "::org::tombear::rpcice::simple::hello::gen::HelloApi";
+        return "::gen::HelloApi";
     }
 
     static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_sayHello(HelloApi obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)

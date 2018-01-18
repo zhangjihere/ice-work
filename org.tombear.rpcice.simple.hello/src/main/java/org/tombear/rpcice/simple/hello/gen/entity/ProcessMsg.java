@@ -93,7 +93,7 @@ public class ProcessMsg extends com.zeroc.Ice.Value
 
     public static String ice_staticId()
     {
-        return "::org::tombear::rpcice::simple::hello::gen::entity::ProcessMsg";
+        return "::gen::entity::ProcessMsg";
     }
 
     @Override
@@ -102,7 +102,7 @@ public class ProcessMsg extends com.zeroc.Ice.Value
         return ice_staticId();
     }
 
-    public static final long serialVersionUID = -1894300571184737280L;
+    public static final long serialVersionUID = -4115540301249043110L;
 
     @Override
     protected void _iceWriteImpl(com.zeroc.Ice.OutputStream ostr_)

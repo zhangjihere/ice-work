@@ -65,7 +65,7 @@ public class ResultMsg extends com.zeroc.Ice.Value
 
     public static String ice_staticId()
     {
-        return "::org::tombear::rpcice::simple::hello::gen::entity::ResultMsg";
+        return "::gen::entity::ResultMsg";
     }
 
     @Override
@@ -74,7 +74,7 @@ public class ResultMsg extends com.zeroc.Ice.Value
         return ice_staticId();
     }
 
-    public static final long serialVersionUID = -1362815136047775384L;
+    public static final long serialVersionUID = 4485362904678902514L;
 
     @Override
     protected void _iceWriteImpl(com.zeroc.Ice.OutputStream ostr_)
