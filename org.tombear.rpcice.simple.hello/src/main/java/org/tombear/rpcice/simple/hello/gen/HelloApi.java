@@ -66,7 +66,7 @@ public interface HelloApi extends com.zeroc.Ice.Object
 
     static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_process(HelloApi obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
     {
-        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
+        com.zeroc.Ice.Object._iceCheckMode(com.zeroc.Ice.OperationMode.Idempotent, current.mode);
         com.zeroc.Ice.InputStream istr = inS.startReadParams();
         final com.zeroc.IceInternal.Holder<org.tombear.rpcice.simple.hello.gen.entity.ProcessMsg> icePP_procMsg = new com.zeroc.IceInternal.Holder<>();
         istr.readValue(v -> icePP_procMsg.value = v, org.tombear.rpcice.simple.hello.gen.entity.ProcessMsg.class);

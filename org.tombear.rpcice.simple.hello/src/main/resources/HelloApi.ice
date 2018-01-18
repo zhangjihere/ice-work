@@ -12,7 +12,7 @@ module org
                 module hello
                 {
                     module gen
-                    {
+                    {   // below define the Ice generated code
                         module entity
                         {
                             enum Cp4ccStatus { Cp4ccUnknown, Cp4ccInitial, Cp4ccReceive, Cp4ccDecode,
@@ -23,7 +23,8 @@ module org
                                                      Cp4ccPng, Cp4ccZip, Cp4ccFinal, Cp4ccOther,
                                                      Cp4ccDIR, Cp4ccMaxFileType };
 
-                            ["java:getset", "protected"] class ProcessMsg
+                            ["java:getset", "protected"]
+                            class ProcessMsg
                             {
                                 string sessionId;
                                 string s3Key;
@@ -32,7 +33,8 @@ module org
                             }
 
 
-                            ["java:getset", "protected"] class ResultMsg
+                            ["java:getset", "protected"]
+                            class ResultMsg
                             {
                                 string sessionId;
                                 string s3Key;
@@ -42,8 +44,8 @@ module org
                         interface HelloApi
                         {
                             idempotent void sayHello(int delay);
-                            // Notes, the module entity must be declared above.
-                            entity::ResultMsg process(entity::ProcessMsg procMsg);
+                            // Notes, the module parameter must be declared above.
+                            idempotent entity::ResultMsg process(entity::ProcessMsg procMsg);
                             entity::Cp4ccStatus check(string sessionId);
                             void shutdown();
                         }
