@@ -114,11 +114,19 @@
             <artifactId>icessl</artifactId>
             <version>3.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icebox</artifactId>
+            <version>3.7.0</version>
+        </dependency>
     </dependencies>
 
     <modules>
         <module>org.tombear.rpcice.simple.server</module>
         <module>org.tombear.rpcice.simple.client</module>
         <module>org.tombear.rpcice.simple.hello</module>
+        <module>org.tombear.rpcice.simple.sms</module>
+        <module>org.tombear.rpcice.IceBox</module>
+        <module>org.tombear.rpcice.IceBox.client</module>
     </modules>
 </project>

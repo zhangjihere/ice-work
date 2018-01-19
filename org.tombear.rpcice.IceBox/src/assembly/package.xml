@@ -1,0 +1,74 @@
+<!--
+  ~ **********************************************************************
+  ~
+  ~ Copyright (c) 2017-2018 Samsung, Inc. All rights reserved.
+  ~
+  ~ **********************************************************************
+  -->
+
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <!-- TODO: a jarjar format would be better -->
+    <id>bin</id>
+    <!-- 最终打包成一个用于发布的zip文件 -->
+    <formats>
+        <format>zip</format>
+    </formats>
+    <!--<includeBaseDirectory>false</includeBaseDirectory>-->
+    <!-- 添加-maven-依赖jar到zip包下的输出目录 -->
+    <dependencySets>
+        <dependencySet>
+            <!-- 不使用项目的artifact(不复制项目jar)，jar不要解压，打包进zip文件的lib目录 -->
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <!-- 把项目相关的说明文件，打包进zip文件的根目录 -->
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+            </includes>
+        </fileSet>
+        <!-- 把项目的配置文件，打包进zip文件的config目录 -->
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>config.icebox</include>
+            </includes>
+        </fileSet>
+        <!-- 把项目的脚本文件目录（ src/main/scripts ）中的启动脚本文件，打包进zip文件的跟目录 -->
+        <fileSet>
+            <!--<directory>${project.build.scriptSourceDirectory}</directory>-->
+            <directory>${project.basedir}/src/main/bin</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>startup.*</include>
+            </includes>
+        </fileSet>
+        <!-- 把项目自己编译出来的jar文件，打包进zip文件的根目录 -->
+        <!--<fileSet>-->
+            <!--<directory>${project.build.directory}</directory>-->
+            <!--<outputDirectory></outputDirectory>-->
+            <!--<includes>-->
+                <!--<include>${project.build.finalName}.jar</include>-->
+            <!--</includes>-->
+        <!--</fileSet>-->
+        <!-- 非maven的依赖打包进zip中 -->
+        <!--<fileSet>
+            <directory>${project.basedir}/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>-->
+    </fileSets>
+</assembly>

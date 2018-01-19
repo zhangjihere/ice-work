@@ -1,0 +1,41 @@
+# server properties
+Ice.Admin.Endpoints=tcp -p 9996 -h localhost
+Ice.Admin.InstanceName=DemoIceBox
+# Deprecated IceBox.ServiceManager.Endpoints=tcp -p 9999 -h localhost
+IceBox.PrintServicesReady=MyAppIceBox 1
+IceBox.InheritProperties=1
+
+# performance properties
+Ice.MessageSizeMax=2048
+Ice.ThreadPool.Server.Size=4
+Ice.ThreadPool.Server.SizeMax=100
+Ice.ThreadPool.Server.SizeWarn=40
+Ice.ThreadPool.Client.Size=4
+Ice.ThreadPool.Client.SizeMax=100
+Ice.ThreadPool.Client.SizeWarn=40
+
+# Deprecated for system stronger
+#Ice.ACM.Client=300
+#Ice.ACM.Server=300
+
+# trace log
+#Ice.Trace.Network=1
+#Ice.Trace.Protocol=1
+Ice.Trace.ThreadPool=1
+Ice.Trace.Locator=1
+Ice.Warn.Connections=1
+Ice.Warn.Dispatch=1
+Ice.Warn.Endpoints=1
+
+# service define begin
+IceBox.Service.HelloService=org.tombear.rpcice.icebox.HelloApiStarter --Ice.Config=config.service.hello iceObject=helloObj
+IceBox.Service.SMSService=org.tombear.rpcice.icebox.SMSWithImplStarter --Ice.Config=config.service.sms
+
+# service define end
+
+# service load order
+IceBox.LoadOrder=HelloService,SMSService
+
+# service share communicator
+IceBox.UseSharedCommunicator.HelloService=1
+IceBox.UseSharedCommunicator.SMSService=1
