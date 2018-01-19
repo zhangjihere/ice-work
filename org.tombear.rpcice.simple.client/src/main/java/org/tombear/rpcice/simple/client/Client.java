@@ -1,17 +1,26 @@
 package org.tombear.rpcice.simple.client;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zeroc.Ice.Communicator;
+import com.zeroc.Ice.ObjectPrx;
+import com.zeroc.Ice.Util;
+
 import org.tombear.rpcice.simple.hello.gen.HelloApiPrx;
 
 public class Client {
     public static void main(String[] args) {
         int status = 0;
-        java.util.List<String> extraArgs = new java.util.ArrayList<>();
+        List<String> extraArgs = new ArrayList<>();
 
         //
         // try with resource block - communicator is automatically destroyed
         // at the end of this try block
         //
-        try (com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args, "config.client", extraArgs)) {
+        try (Communicator communicator = Util.initialize(args, "config.client", extraArgs)) {
             if (!extraArgs.isEmpty()) {
                 System.err.println("too many arguments");
                 status = 1;
@@ -23,9 +32,15 @@ public class Client {
         System.exit(status);
     }
 
-    private static int run(com.zeroc.Ice.Communicator communicator) {
-        HelloApiPrx twoway = HelloApiPrx.checkedCast(
-                communicator.propertyToProxy("HelloNeverMind.Proxy")).ice_twoway().ice_secure(false);
+    private static int run(Communicator communicator) {
+        // transfer remote Object Indentity and Endpoint to Proxy Object
+        //ObjectPrx base = communicator.stringToProxy("helloObj:tcp -p 10000:udp -p 10000:ssl -p 10001");
+        // or
+        // Pass service unit perfix in config.client to create a Proxy Object
+        ObjectPrx base = communicator.propertyToProxy("HelloNeverMind.Proxy");
+        // Through checkedCast down forward change type and get remote Service proxy interface
+        HelloApiPrx proxy = HelloApiPrx.checkedCast(base);// it has a rpc process for check, if improve performance, it can use uncheckCast
+        HelloApiPrx twoway = proxy.ice_twoway().ice_secure(false);
         if (twoway == null) {
             System.err.println("invalid proxy");
             return 1;
@@ -41,7 +56,7 @@ public class Client {
 
         menu();
 
-        java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         String line = null;
         do {

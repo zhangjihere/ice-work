@@ -1,8 +1,12 @@
 package org.tombear.rpcice.simple.server;
 
+import com.zeroc.Ice.Application;
+import com.zeroc.Ice.ObjectAdapter;
+import com.zeroc.Ice.Util;
+
 import org.tombear.rpcice.simple.server.service.HelloApiImpl;
 
-public class Server extends com.zeroc.Ice.Application {
+public class Server extends Application {
     @Override
     public int run(String[] args) {
         if (args.length > 0) {
@@ -10,9 +14,14 @@ public class Server extends com.zeroc.Ice.Application {
             return 1;
         }
 
-        com.zeroc.Ice.ObjectAdapter adapter = communicator().createObjectAdapter("HelloAdp");
-        adapter.add(new HelloApiImpl(), com.zeroc.Ice.Util.stringToIdentity("helloObj"));
+        // create ObjectAdapter named MyServiceAdapter, using default TCP protocol and UDP protocol for Datagram and SSL for secure
+        //ObjectAdapter adapter = communicator().createObjectAdapterWithEndpoints("HelloAdp", "default -p 10000:udp -p 10000:ssl -p 10001");
+        // or
+        ObjectAdapter adapter = communicator().createObjectAdapter("HelloAdp");//without '.Endpoints' from config.client
+        HelloApiImpl servant = new HelloApiImpl();
+        adapter.add(servant, Util.stringToIdentity("helloObj"));
         adapter.activate();
+        System.out.println("server started.");
         communicator().waitForShutdown();
         return 0;
     }
