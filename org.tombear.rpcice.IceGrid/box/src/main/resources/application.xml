@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file was written by IceGrid Admin -->
+<icegrid>
+    <application name="HelloSimpsons">
+
+        <properties id="mx">
+            <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
+            <property name="IceMX.Metrics.Debug.Disabled" value="1"/>
+            <property name="IceMX.Metrics.ByParent.GroupBy" value="parent"/>
+            <property name="IceMX.Metrics.ByParent.Disabled" value="1"/>
+        </properties>
+
+        <properties id="trace">
+            <property name="Ice.PrintStackTraces" value="1"/>
+            <property name="Ice.Trace.Retry" value="2"/>
+            <property name="Ice.Trace.Network" value="1"/>
+            <property name="Ice.Trace.ThreadPool" value="1"/>
+            <property name="Ice.Trace.Locator" value="1"/>
+        </properties>
+
+        <properties id="performance">
+            <property name="Ice.MessageSizeMax" value="2048"/>
+            <property name="Ice.ThreadPool.Server.Size" value="4"/>
+            <property name="Ice.ThreadPool.Server.SizeMax" value="40"/>
+            <property name="Ice.ThreadPool.Server.SizeWarn" value="20"/>
+            <property name="Ice.ThreadPool.Client.Size" value="4"/>
+            <property name="Ice.ThreadPool.Client.SizeMax" value="40"/>
+            <property name="Ice.ThreadPool.Client.SizeWarn" value="20"/>
+        </properties>
+
+        <replica-group id="HelloGroup">
+            <load-balancing type="round-robin" n-replicas="1"/>
+            <object identity="hello" type="::gen::HelloApi"/>
+        </replica-group>
+
+        <service-template id="HelloService">
+            <parameter name="name"/>
+            <service name="${name}"
+                     entry="org.tombear.rpcice.IceGrid.service.HelloServiceG">
+                <description>A very simple service named after ${name}</description>
+                <properties>
+                    <properties refid="mx"/>
+                    <property name="Hello.Identity" value="hello"/>
+                </properties>
+                <adapter name="Hello-${name}" id="Hello-${name}" endpoints="default -h localhost"
+                         replica-group="HelloGroup"
+                         server-lifetime="false"/>
+            </service>
+        </service-template>
+
+        <server-template id="Glacier2">
+            <parameter name="instance-name" default="${application}.Glacier2"/>
+            <parameter name="client-endpoints"/>
+            <parameter name="server-endpoints"/>
+            <parameter name="session-timeout" default="0"/>
+            <server id="${instance-name}" activation="manual" exe="glacier2router">
+                <properties>
+                    <properties refid="mx"/>
+                    <property name="Glacier2.Client.Endpoints" value="${client-endpoints}"/>
+                    <property name="Glacier2.Server.Endpoints" value="${server-endpoints}"/>
+                    <property name="Glacier2.InstanceName" value="${instance-name}"/>
+                    <property name="Glacier2.SessionTimeout" value="${session-timeout}"/>
+                </properties>
+            </server>
+        </server-template>
+
+        <node name="node1">
+            <server-instance template="Glacier2"
+                             instance-name="DemoGlacier2"
+                             client-endpoints="tcp -h localhost -p 4063"
+                             server-endpoints="tcp -h localhost">
+                <properties>
+                    <property name="Glacier2.SessionManager"
+                              value="DemoIceGrid/AdminSessionManager"/>
+                    <property name="Glacier2.PermissionsVerifier"
+                              value="DemoGlacier2/NullPermissionsVerifier"/>
+                </properties>
+            </server-instance>
+            <icebox id="IceBox" activation="on-demand" exe="java">
+                <description>A sample IceBox server</description>
+                <option>-Xmx512m</option>
+                <option>-server</option>
+                <option>-jar</option>
+                <option>lib/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT.jar</option>
+                <properties>
+                    <properties refid="mx"/>
+                    <properties refid="trace"/>
+                    <properties refid="performance"/>
+                    <property name="IceBox.Trace.ServiceObserver" value="1"/>
+                </properties>
+                <service-instance template="HelloService" name="Homer"/>
+                <service-instance template="HelloService" name="Marge"/>
+                <env>LANG=en_US.utf8</env>
+            </icebox>
+        </node>
+    </application>
+</icegrid>

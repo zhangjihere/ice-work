@@ -69,3 +69,7 @@ fabric.properties
 /.idea/encodings.xml
 /.idea
 generated
+db
+log
+ice.stdout.log
+ice.stderr.log

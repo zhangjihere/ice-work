@@ -1,0 +1,14 @@
+# ice object and adapter by customizing
+#user.helloG.adapter.name=HelloGAdapter
+#user.helloG.object.name=HelloGObject
+
+# For using IceGrid, <adapter-name>.AdapterId must be set an identifier and unique within the registry
+#Hello-HelloG.AdapterId=HelloGAdapterId
+Hello-HelloG.Endpoints=tcp -p 11011
+Hello.Identity=hello
+#Ice.Default.Locator=DemoIceGrid/Locator:tcp -h localhost -p 4061
+
+#Hello-HelloG.Debug=1
+Ice.Warn.Connections=1
+#Ice.Trace.Network=1
+#Ice.Trace.Protocol=1

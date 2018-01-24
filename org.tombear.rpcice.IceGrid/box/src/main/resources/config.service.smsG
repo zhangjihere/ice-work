@@ -1,0 +1,13 @@
+# ice object and adapter by customizing
+user.smsG.adapter.name=SmsGAdapter
+user.smsG.object.name=SmsGObject
+
+# For using IceGrid, <adapter-name>.AdapterId must be set an identifier and unique within the registry
+SmsGAdapter.AdapterId=SmsGAdapterId
+SmsGAdapter.Endpoints=tcp
+#Ice.Default.Locator=DemoIceGrid/Locator:tcp -h localhost -p 4061
+
+#SmsGAdapter.Debug=1
+Ice.Warn.Connections=1
+#Ice.Trace.Network=1
+#Ice.Trace.Protocol=1

@@ -1,0 +1,39 @@
+# server properties
+Ice.Admin.Endpoints=tcp -h localhost
+Ice.Admin.InstanceName=DemoGridIceBox
+
+# Deprecated IceBox.ServiceManager.Endpoints=tcp -p 9999 -h localhost
+IceBox.PrintServicesReady=MyGridIceBox 1
+IceBox.InheritProperties=1
+
+# performance properties
+Ice.MessageSizeMax=2048
+Ice.ThreadPool.Server.Size=4
+Ice.ThreadPool.Server.SizeMax=100
+Ice.ThreadPool.Server.SizeWarn=40
+Ice.ThreadPool.Client.Size=4
+Ice.ThreadPool.Client.SizeMax=100
+Ice.ThreadPool.Client.SizeWarn=40
+
+# trace log
+#Ice.Trace.Network=1
+#Ice.Trace.Protocol=1
+Ice.Trace.ThreadPool=1
+Ice.Trace.Locator=1
+Ice.Warn.Connections=1
+Ice.Warn.Dispatch=1
+Ice.Warn.Endpoints=1
+
+# service define begin, IceBox.Service.<name>,
+# <name> is service name also used on IceBox.LoadOrder and IceBox.UseSharedCommunicator.<name>
+IceBox.Service.HelloG=org.tombear.rpcice.IceGrid.service.HelloServiceG --Ice.Config=config.service.helloG
+IceBox.Service.SmsG=org.tombear.rpcice.IceGrid.service.SmsServiceG --Ice.Config=config.service.smsG
+
+# service define end
+
+# service load order
+IceBox.LoadOrder=HelloG,SmsG
+
+# service share communicator
+IceBox.UseSharedCommunicator.HelloG=1
+IceBox.UseSharedCommunicator.SmsG=1

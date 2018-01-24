@@ -27,7 +27,7 @@ Ice.Warn.Connections=1
 # 2 = like 1, but more detailed
 # 3 = like 2, but also trace data transfer
 #
-#Ice.Trace.Network=1
+Ice.Trace.Network=1
 
 #
 # Protocol Tracing
@@ -62,3 +62,12 @@ IceSSL.Password=password
 Ice.Admin.InstanceName=client
 IceMX.Metrics.Debug.GroupBy=id
 IceMX.Metrics.ByParent.GroupBy=parent
+
+
+Ice.Default.Timeout=30000
+#Ice.RetryIntervals=0 100 500 3000 10000 60000
+Ice.Trace.Retry=1
+# Client
+Ice.ACM.Close=3 # CloseOff
+Ice.ACM.Heartbeat=0 # HeartbeatAlways
+Ice.ACM.Timeout=5

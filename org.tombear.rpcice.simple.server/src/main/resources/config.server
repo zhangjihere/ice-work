@@ -30,7 +30,7 @@ Ice.Warn.Connections=1
 # 2 = like 1, but more detailed
 # 3 = like 2, but also trace data transfer
 #
-#Ice.Trace.Network=1
+Ice.Trace.Network=1
 
 #
 # Protocol Tracing
@@ -64,3 +64,8 @@ IceSSL.Password=password
 Ice.Admin.InstanceName=server
 IceMX.Metrics.Debug.GroupBy=id
 IceMX.Metrics.ByParent.GroupBy=parent
+
+# Server
+Ice.ACM.Close=1 # CloseOnIdle
+Ice.ACM.Heartbeat=1 # HeartbeatOnDispatch
+Ice.ACM.Timeout=30
