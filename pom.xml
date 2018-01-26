@@ -119,6 +119,21 @@
             <artifactId>icebox</artifactId>
             <version>3.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icegrid</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icediscovery</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icelocatordiscovery</artifactId>
+            <version>3.7.0</version>
+        </dependency>
     </dependencies>
 
     <modules>
@@ -127,6 +142,5 @@
         <module>org.tombear.rpcice.simple.hello</module>
         <module>org.tombear.rpcice.simple.sms</module>
         <module>org.tombear.rpcice.IceBox</module>
-        <module>org.tombear.rpcice.IceBox.client</module>
     </modules>
 </project>

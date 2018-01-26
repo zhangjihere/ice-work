@@ -18,39 +18,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>ice</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>icessl</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>icebox</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>icegrid</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>icediscovery</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroc</groupId>
-            <artifactId>icelocatordiscovery</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-    </dependencies>
-
     <modules>
         <module>registry</module>
         <module>node</module>
