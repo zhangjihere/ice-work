@@ -1,4 +1,4 @@
-package org.tombear.rpcice.IceGrid;
+package org.tombear.rpcice.IceGrid.client;
 
 import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.ObjectPrx;

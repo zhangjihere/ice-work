@@ -60,7 +60,7 @@
         <icebox id="IceBoxServer${id}" exe="java" activation="on-demand">
             <description>A IceBox server template</description>
             <option>-server</option>
-            <option>-Xmx512m</option>
+            <option>-Xmx1024m</option>
             <option>-DBoxId=IceBox${id}</option>
             <option>-jar</option>
             <option>lib/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT.jar</option>
