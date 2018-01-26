@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<icegrid>
+    <application name="AdvanceApplication">
+        <description>This advance application prepared some replica-group in terms of virtual adapter for the whole grid.</description>
+        <replica-group id="HelloGroup">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="hello" type="::gen::HelloApi"/>
+        </replica-group>
+        <replica-group id="SmsGroup">
+            <load-balancing type="adaptive" n-replicas="0"/>
+            <object identity="sms" type="::gen::SMSService"/>
+        </replica-group>
+    </application>
+</icegrid>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file was written by IceGrid Admin -->
+<icegrid>
+    <application name="HelloBoy1">
+        <include file="application_basic_tpl.xml"/>
+        <node name="node1">
+            <server-instance template="IceBoxServerTpl" id="1"/>
+            <server-instance template="IceBoxServerTpl" id="2"/>
+        </node>
+    </application>
+</icegrid>

@@ -8,10 +8,15 @@
 ## run the IceGrid with IceBox please use follow command
 > unzip org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT-bin.zip  
 > cd org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT  
-> icegridnode --Ice.Config=config.grid
-> icegridadmin --Ice.Config=config.grid -e "application add application.xml"
+> icegridnode --Ice.Config=config.grid  
+
+specify different application configuration
+> icegridadmin --Ice.Config=config.grid -e "application add application_advance.xml"
+> icegridadmin --Ice.Config=config.grid -e "application add application_node_1.xml"
+> icegridadmin --Ice.Config=config.grid -e "application add application_node_2.xml"
 > icegridadmin -u foo -p bar --Ice.Default.Locator="DemoIceGrid/Locator:tcp -h localhost -p 4061"
 ### Maven package and unzip, then test to run IceGrid with IceBox automatically
 > mvn clean package  
 run 
 > target/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT/restart_IceGrid.sh
+> target/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT/restart_IceNode.sh

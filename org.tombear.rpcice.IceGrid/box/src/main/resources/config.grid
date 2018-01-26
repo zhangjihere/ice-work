@@ -10,13 +10,12 @@ Ice.Default.Locator=DemoIceGrid/Locator:default -h localhost -p 4061
 Ice.StdErr=log/ice.stderr.log
 Ice.StdOut=log/ice.stdout.log
 
-
 #
 # IceGrid registry configuration.
 #
-IceGrid.Registry.Client.Endpoints=default -h localhost -p 4061
-IceGrid.Registry.Server.Endpoints=default -h localhost
-IceGrid.Registry.Internal.Endpoints=default -h localhost
+IceGrid.Registry.Client.Endpoints=default  -p 4061
+IceGrid.Registry.Server.Endpoints=default
+IceGrid.Registry.Internal.Endpoints=default
 
 #
 # Enable the admin session manager for use with Glacier2.

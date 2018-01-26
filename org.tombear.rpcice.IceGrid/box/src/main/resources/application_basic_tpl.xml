@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<icegrid>
+    <!-- shared properties -->
+    <properties id="mx">
+        <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
+        <property name="IceMX.Metrics.Debug.Disabled" value="1"/>
+        <property name="IceMX.Metrics.ByParent.GroupBy" value="parent"/>
+        <property name="IceMX.Metrics.ByParent.Disabled" value="1"/>
+    </properties>
+    <properties id="trace">
+        <property name="Ice.PrintStackTraces" value="1"/>
+        <property name="Ice.Trace.Retry" value="2"/>
+        <property name="Ice.Trace.Network" value="1"/>
+        <property name="Ice.Trace.ThreadPool" value="1"/>
+        <property name="Ice.Trace.Locator" value="1"/>
+    </properties>
+    <properties id="performance">
+        <property name="Ice.MessageSizeMax" value="2048"/>
+        <property name="Ice.ThreadPool.Server.Size" value="4"/>
+        <property name="Ice.ThreadPool.Server.SizeMax" value="40"/>
+        <property name="Ice.ThreadPool.Server.SizeWarn" value="20"/>
+        <property name="Ice.ThreadPool.Client.Size" value="4"/>
+        <property name="Ice.ThreadPool.Client.SizeMax" value="40"/>
+        <property name="Ice.ThreadPool.Client.SizeWarn" value="20"/>
+    </properties>
+
+    <service-template id="HelloService">
+        <parameter name="name"/>
+        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.HelloServiceG">
+            <description>A very simple service named after ${name}</description>
+            <adapter name="Hello-${name}"
+                     id="Hello-${name}"
+                     endpoints="default"
+                     replica-group="HelloGroup"
+                     server-lifetime="false"/>
+            <properties>
+                <properties refid="mx"/>
+                <property name="Hello.Identity" value="hello"/>
+            </properties>
+        </service>
+    </service-template>
+    <service-template id="SmsService">
+        <parameter name="name"/>
+        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.SmsServiceG">
+            <description>A very simple sms service named after ${name}</description>
+            <adapter name="Sms-${name}"
+                     id="Sms-${name}"
+                     endpoints="default"
+                     replica-group="SmsGroup"
+                     server-lifetime="false"/>
+            <properties>
+                <properties refid="mx"/>
+                <property name="Sms.Identity" value="sms"/>
+            </properties>
+        </service>
+    </service-template>
+
+    <server-template id="IceBoxServerTpl">
+        <parameter name="id"/>
+        <icebox id="IceBoxServer${id}" exe="java" activation="on-demand">
+            <description>A IceBox server template</description>
+            <option>-server</option>
+            <option>-Xmx512m</option>
+            <option>-DBoxId=IceBox${id}</option>
+            <option>-jar</option>
+            <option>lib/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT.jar</option>
+            <properties>
+                <properties refid="trace"/>
+                <properties refid="performance"/>
+            </properties>
+            <service-instance template="HelloService" name="Homer${id}"/>
+            <service-instance template="SmsService" name="Sender${id}"/>
+        </icebox>
+    </server-template>
+
+</icegrid>

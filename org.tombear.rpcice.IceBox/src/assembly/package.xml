@@ -9,7 +9,6 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
-    <!-- TODO: a jarjar format would be better -->
     <id>bin</id>
     <!-- 最终打包成一个用于发布的zip文件 -->
     <formats>
@@ -30,7 +29,7 @@
         <!-- 把项目相关的说明文件，打包进zip文件的根目录 -->
         <fileSet>
             <directory>${project.basedir}</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>README*</include>
                 <include>LICENSE*</include>
@@ -40,7 +39,7 @@
         <!-- 把项目的配置文件，打包进zip文件的config目录 -->
         <fileSet>
             <directory>${project.basedir}/src/main/resources</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>config.icebox</include>
             </includes>
@@ -49,7 +48,7 @@
         <fileSet>
             <!--<directory>${project.build.scriptSourceDirectory}</directory>-->
             <directory>${project.basedir}/src/main/bin</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>startup.*</include>
             </includes>

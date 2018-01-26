@@ -8,6 +8,8 @@ import com.zeroc.Ice.Properties;
 import com.zeroc.Ice.Util;
 import com.zeroc.IceBox.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tombear.rpcice.simple.hello.gen.HelloApi;
 import org.tombear.rpcice.simple.hello.gen.entity.Cp4ccStatus;
 import org.tombear.rpcice.simple.hello.gen.entity.ProcessMsg;
@@ -20,7 +22,9 @@ import org.tombear.rpcice.simple.hello.gen.entity.ResultMsg;
  */
 public class HelloServiceG implements HelloApi, Service {
 
+    private Logger logger = LoggerFactory.getLogger(HelloServiceG.class);
     private ObjectAdapter adapter;
+    private String name;
 
     @Override
     public void sayHello(int delay, Current current) {
@@ -28,8 +32,7 @@ public class HelloServiceG implements HelloApi, Service {
             Thread.sleep(1000 * delay);
         } catch (InterruptedException ignore) {
         }
-        System.out.println("Hello IceBox for Grid.");
-
+        logger.debug("Hello IceBox for Grid.--> {}", this.name);
     }
 
     @Override
@@ -49,12 +52,13 @@ public class HelloServiceG implements HelloApi, Service {
 
     @Override
     public void start(String name, Communicator communicator, String[] args) {
+        this.name = name;
         Properties props = communicator.getProperties();//from config.iceboxG and config.service.helloG
         adapter = communicator.createObjectAdapter("Hello-" + name);
         Object base = this;
         adapter.add(base, Util.stringToIdentity(props.getProperty("Hello.Identity")));
         adapter.activate();
-        System.out.println("start Service: " + name);
+        logger.debug("start Server {}", name);
     }
 
     @Override

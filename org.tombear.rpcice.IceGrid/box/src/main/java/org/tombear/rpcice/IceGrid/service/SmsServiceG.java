@@ -7,6 +7,8 @@ import com.zeroc.Ice.Properties;
 import com.zeroc.Ice.Util;
 import com.zeroc.IceBox.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tombear.rpcice.simple.sms.gen.SMSService;
 
 /**
@@ -14,25 +16,28 @@ import org.tombear.rpcice.simple.sms.gen.SMSService;
  * Created by ji.zhang on 1/22/18.
  */
 public class SmsServiceG implements SMSService, Service {
+
+    private Logger logger = LoggerFactory.getLogger(SmsServiceG.class);
+
     @Override
     public void sendSMS(String msg, Current current) {
-        System.out.println("recieve: " + msg);
+        logger.debug("receive sms: {}--> {}", msg, this.name);
     }
 
     @Override
     public void start(String name, Communicator communicator, String[] args) {
         this.name = name;
         Properties props = communicator.getProperties();
-        adapter = communicator.createObjectAdapter(props.getProperty("user.smsG.adapter.name"));
-        adapter.add(this, Util.stringToIdentity(props.getProperty("user.smsG.object.name")));
+        adapter = communicator.createObjectAdapter("Sms-" + name);
+        adapter.add(this, Util.stringToIdentity(props.getProperty("Sms.Identity")));
         adapter.activate();
-        System.out.println("start Service: " + name);
+        logger.debug("start Service: {}", name);
     }
 
     @Override
     public void stop() {
         adapter.destroy();
-        System.out.println("destory adapter" + this.name);
+        logger.debug("destory adapter {}", this.name);
     }
 
     private String name;

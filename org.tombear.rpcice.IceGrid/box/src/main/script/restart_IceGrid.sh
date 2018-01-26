@@ -7,11 +7,13 @@ ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
 kill -9 ${ID}
 
 ICE_GRID_NODE="icegridnode"
-echo "start icegrid with node"
+echo "start IceGrid with a new node"
 icegridnode --Ice.Config=config.grid &
 sleep 2
+echo "add advance application"
+icegridadmin --Ice.Config=config.grid -e "application add application_advance.xml"
 echo "add application"
-icegridadmin --Ice.Config=config.grid -e "application add application.xml"
+icegridadmin --Ice.Config=config.grid -e "application add application_node_1.xml"
 sleep 2
-echo "enter admin"
+echo "enter IceGrid Admin"
 icegridadmin -u foo -p bar --Ice.Default.Locator="DemoIceGrid/Locator:tcp -h localhost -p 4061"

@@ -9,7 +9,6 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
-    <!-- TODO: a jarjar format would be better -->
     <id>bin</id>
     <formats>
         <format>zip</format>
@@ -33,15 +32,16 @@
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>config.grid</include>
-                <include>application.xml</include>
+                <include>config.grid.node</include>
+                <include>application*.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
 
                 <include>README*</include>
@@ -52,7 +52,7 @@
         <fileSet>
             <!--<directory>${project.build.scriptSourceDirectory}</directory>-->
             <directory>${project.basedir}/src/main/script</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>*.sh</include>
             </includes>
