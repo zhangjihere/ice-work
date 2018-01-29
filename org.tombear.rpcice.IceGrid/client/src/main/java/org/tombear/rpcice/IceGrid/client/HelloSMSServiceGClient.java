@@ -12,21 +12,21 @@ import org.tombear.rpcice.simple.sms.gen.SMSServicePrx;
  *
  * Created by ji.zhang on 1/22/18.
  */
-public class HelloServiceGClient {
+public class HelloSMSServiceGClient {
     public static void main(String[] args) {
         String[] initParams = new String[]{"--Ice.Default.Locator=DemoIceGrid/Locator:tcp -h localhost -p 4061"};
         try (Communicator communicator = Util.initialize(initParams)) {
 //            ObjectPrx objectPrx = communicator.stringToProxy("HelloServiceG:tcp -h localhost -p 10000:udp -h localhost -p 10000");
 //            ObjectPrx objectPrx = communicator.stringToProxy("HelloGObject@HelloGAdapterId");// normal IceBox registry
             //HelloService
-            ObjectPrx objectPrx = communicator.stringToProxy("hello");
+            ObjectPrx objectPrx = communicator.stringToProxy("HelloApiObj");
             HelloApiPrx proxy = HelloApiPrx.checkedCast(objectPrx);
             HelloApiPrx helloTowWay = proxy.ice_twoway().ice_secure(false);
             System.out.printf("say... ");
             helloTowWay.sayHello(1);
             System.out.println("Hello!");
             //SmsService
-            ObjectPrx smsObjPrx = communicator.stringToProxy("sms");
+            ObjectPrx smsObjPrx = communicator.stringToProxy("SMSServiceObj");
             SMSServicePrx smsPrx = SMSServicePrx.checkedCast(smsObjPrx);
             SMSServicePrx smsPrxTwoWay = smsPrx.ice_twoway().ice_secure(false);
             System.out.printf("send...");

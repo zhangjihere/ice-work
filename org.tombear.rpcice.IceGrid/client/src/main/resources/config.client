@@ -1,0 +1,2 @@
+--Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061
+idleTimeOutSeconds=300

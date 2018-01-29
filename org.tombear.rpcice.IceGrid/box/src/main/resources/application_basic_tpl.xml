@@ -35,7 +35,7 @@
                      server-lifetime="false"/>
             <properties>
                 <properties refid="mx"/>
-                <property name="Hello.Identity" value="hello"/>
+                <property name="Hello.Identity" value="HelloApiObj"/>
             </properties>
         </service>
     </service-template>
@@ -50,7 +50,7 @@
                      server-lifetime="false"/>
             <properties>
                 <properties refid="mx"/>
-                <property name="Sms.Identity" value="sms"/>
+                <property name="Sms.Identity" value="SMSServiceObj"/>
             </properties>
         </service>
     </service-template>
