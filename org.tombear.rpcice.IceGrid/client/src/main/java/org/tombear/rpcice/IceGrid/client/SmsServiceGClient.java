@@ -4,7 +4,6 @@ import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.ObjectPrx;
 import com.zeroc.Ice.Util;
 
-import org.tombear.rpcice.simple.hello.gen.HelloApiPrx;
 import org.tombear.rpcice.simple.sms.gen.SMSServicePrx;
 
 /**
