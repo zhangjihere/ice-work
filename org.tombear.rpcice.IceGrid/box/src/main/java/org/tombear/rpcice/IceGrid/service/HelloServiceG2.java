@@ -1,14 +1,7 @@
 package org.tombear.rpcice.IceGrid.service;
 
-import java.util.Arrays;
-
-import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.Current;
 import com.zeroc.Ice.Object;
-import com.zeroc.Ice.ObjectAdapter;
-import com.zeroc.Ice.Properties;
-import com.zeroc.Ice.Util;
-import com.zeroc.IceBox.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,15 +11,12 @@ import org.tombear.rpcice.simple.hello.gen.entity.ProcessMsg;
 import org.tombear.rpcice.simple.hello.gen.entity.ResultMsg;
 
 /**
- * HelloService in Grid
+ * another IceBoxService HelloSericeApi implement
  *
- * Created by ji.zhang on 1/22/18.
+ * Created by ji.zhang on 1/29/18.
  */
-public class HelloServiceG implements HelloApi, Service {
-
-    private Logger logger = LoggerFactory.getLogger(HelloServiceG.class);
-    private ObjectAdapter adapter;
-    private String name;
+public class HelloServiceG2 extends AbstractIceBoxService implements HelloApi {
+    private static Logger logger = LoggerFactory.getLogger(HelloServiceG2.class);
 
     @Override
     public void sayHello(int delay, Current current) {
@@ -53,18 +43,7 @@ public class HelloServiceG implements HelloApi, Service {
     }
 
     @Override
-    public void start(String name, Communicator communicator, String[] args) {
-        this.name = name;
-        Properties props = communicator.getProperties();//from config.iceboxG and config.service.helloG
-        adapter = communicator.createObjectAdapter(name);
-        Object base = this;
-        adapter.add(base, Util.stringToIdentity(props.getProperty("Service.Identity")));
-        adapter.activate();
-        logger.debug("start Server {}", name);
-    }
-
-    @Override
-    public void stop() {
-
+    public Object createMyIceServiceObj(String[] args) {
+        return this;
     }
 }

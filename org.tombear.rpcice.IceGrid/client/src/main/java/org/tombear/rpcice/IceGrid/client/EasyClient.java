@@ -9,6 +9,7 @@ import org.tombear.rpcice.simple.sms.gen.SMSServicePrx;
  * Created by ji.zhang on 1/29/18.
  */
 public class EasyClient {
+
     public static void main(String[] args) {
         HelloApiPrx helloApiPrx = IceClientUtil.getServicePrx(HelloApiPrx.class);
         helloApiPrx = helloApiPrx.ice_twoway().ice_secure(false);
@@ -19,7 +20,7 @@ public class EasyClient {
         SMSServicePrx smsServicePrx = IceClientUtil.getServicePrx(SMSServicePrx.class);
         smsServicePrx = smsServicePrx.ice_twoway().ice_secure(false);
         System.out.printf("sendooo...");
-        smsServicePrx.sendSMS("See you tomorrow, Sir!");
+        smsServicePrx.sendSMS("See you, Sir!");
         System.out.println("Sms!");
     }
 }

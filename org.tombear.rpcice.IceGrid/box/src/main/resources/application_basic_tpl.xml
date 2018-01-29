@@ -26,31 +26,33 @@
 
     <service-template id="HelloService">
         <parameter name="name"/>
-        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.HelloServiceG">
+        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.HelloServiceG2">
             <description>A very simple service named after ${name}</description>
-            <adapter name="Hello-${name}"
-                     id="Hello-${name}"
+            <!-- service name, adapter name and adapter id are all specified the same. -->
+            <adapter name="${name}"
+                     id="${name}"
                      endpoints="default"
                      replica-group="HelloGroup"
                      server-lifetime="false"/>
             <properties>
                 <properties refid="mx"/>
-                <property name="Hello.Identity" value="HelloApiObj"/>
+                <property name="Service.Identity" value="HelloApiObj"/>
             </properties>
         </service>
     </service-template>
     <service-template id="SmsService">
         <parameter name="name"/>
-        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.SmsServiceG">
+        <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.SmsServiceG2">
             <description>A very simple sms service named after ${name}</description>
-            <adapter name="Sms-${name}"
-                     id="Sms-${name}"
+            <!-- service name, adapter name and adapter id are all specified the same. -->
+            <adapter name="${name}"
+                     id="${name}"
                      endpoints="default"
                      replica-group="SmsGroup"
                      server-lifetime="false"/>
             <properties>
                 <properties refid="mx"/>
-                <property name="Sms.Identity" value="SMSServiceObj"/>
+                <property name="Service.Identity" value="SMSServiceObj"/>
             </properties>
         </service>
     </service-template>
@@ -68,7 +70,11 @@
                 <properties refid="trace"/>
                 <properties refid="performance"/>
             </properties>
-            <service-instance template="HelloService" name="Homer${id}"/>
+            <service-instance template="HelloService" name="Homer${id}">
+                <properties>
+                    <property name="cc" value="dd"/>
+                </properties>
+            </service-instance>
             <service-instance template="SmsService" name="Sender${id}"/>
         </icebox>
     </server-template>

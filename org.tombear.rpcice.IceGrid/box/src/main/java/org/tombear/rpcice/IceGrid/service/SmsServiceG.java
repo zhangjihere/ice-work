@@ -28,8 +28,8 @@ public class SmsServiceG implements SMSService, Service {
     public void start(String name, Communicator communicator, String[] args) {
         this.name = name;
         Properties props = communicator.getProperties();
-        adapter = communicator.createObjectAdapter("Sms-" + name);
-        adapter.add(this, Util.stringToIdentity(props.getProperty("Sms.Identity")));
+        adapter = communicator.createObjectAdapter(name);
+        adapter.add(this, Util.stringToIdentity(props.getProperty("Service.Identity")));
         adapter.activate();
         logger.debug("start Service: {}", name);
     }
