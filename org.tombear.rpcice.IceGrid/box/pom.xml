@@ -8,7 +8,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>box</artifactId>
+    <artifactId>org.tombear.rpcice.IceGrid.box</artifactId>
     <packaging>jar</packaging>
 
     <name>box</name>
@@ -20,7 +20,6 @@
     </properties>
 
     <build>
-        <finalName>${project.parent.artifactId}-${project.name}-${project.version}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -28,6 +27,10 @@
                     <exclude>application_*.xml</exclude>
                     <exclude>config.*</exclude>
                 </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/script</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
         <plugins>
@@ -44,6 +47,9 @@
                             <!--<mainClass>com.zeroc.IceBox.Server</mainClass>-->
                         </manifest>
                     </archive>
+                    <excludes>
+                        <exclude>*.sh</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -83,6 +89,25 @@
                     <commandlineArgs>${target.zip} -d target</commandlineArgs>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>process-script-perm</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <chmod file="target/classes/*.sh" perm="755"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -98,14 +123,9 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <groupId>org.tombear</groupId>
+            <artifactId>org.tombear.rpcice.IceGrid.utils</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

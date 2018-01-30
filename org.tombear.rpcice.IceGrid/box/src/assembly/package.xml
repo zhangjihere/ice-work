@@ -43,16 +43,15 @@
             <directory>${project.basedir}</directory>
             <outputDirectory/>
             <includes>
-
                 <include>README*</include>
                 <include>LICENSE*</include>
                 <include>NOTICE*</include>
             </includes>
         </fileSet>
         <fileSet>
-            <!--<directory>${project.build.scriptSourceDirectory}</directory>-->
-            <directory>${project.basedir}/src/main/script</directory>
+            <directory>${project.build.outputDirectory}</directory>
             <outputDirectory/>
+            <fileMode>0755</fileMode>
             <includes>
                 <include>*.sh</include>
             </includes>

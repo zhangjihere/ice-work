@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /home/zhangji/projects_repo/ice-work/org.tombear.rpcice.IceGrid/box/target/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT
+cd ${project.build.directory}/${project.build.finalName}
 ICE_GRID="icegrid"
 echo "Stop IceGridNode and IceGridAdmin service..."
 ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`

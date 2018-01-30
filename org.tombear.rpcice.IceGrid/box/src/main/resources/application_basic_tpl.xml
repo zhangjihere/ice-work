@@ -65,10 +65,11 @@
             <option>-Xmx1024m</option>
             <option>-DBoxId=IceBox${id}</option>
             <option>-jar</option>
-            <option>lib/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT.jar</option>
+            <option>lib/org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT.jar</option>
             <properties>
                 <properties refid="trace"/>
                 <properties refid="performance"/>
+                <property name="IceBox.InheritProperties" value="1"/>
             </properties>
             <service-instance template="HelloService" name="Homer${id}">
                 <properties>

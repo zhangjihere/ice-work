@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.tombear.rpcice.IceGrid.client</artifactId>
+    <artifactId>org.tombear.rpcice.IceGrid.utils</artifactId>
     <packaging>jar</packaging>
 
-    <name>client</name>
+    <name>utils</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -20,19 +20,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.tombear</groupId>
-            <artifactId>org.tombear.rpcice.simple.hello</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <dependency>
-            <groupId>org.tombear</groupId>
-            <artifactId>org.tombear.rpcice.simple.sms</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <dependency>
-            <groupId>org.tombear</groupId>
-            <artifactId>org.tombear.rpcice.IceGrid.utils</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
         </dependency>
     </dependencies>
 </project>

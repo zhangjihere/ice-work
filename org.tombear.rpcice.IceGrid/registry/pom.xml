@@ -8,7 +8,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>registry</artifactId>
+    <artifactId>org.tombear.rpcice.IceGrid.registry</artifactId>
     <packaging>jar</packaging>
 
     <name>registry</name>
