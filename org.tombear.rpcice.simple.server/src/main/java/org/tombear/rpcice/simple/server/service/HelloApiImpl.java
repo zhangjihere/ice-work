@@ -14,7 +14,7 @@ import org.tombear.rpcice.simple.hello.gen.entity.ResultMsg;
 public class HelloApiImpl implements HelloApi {
 
     @Override
-    public void sayHello(int delay, Current current) {
+    public String sayHello(int delay, Current current) {
         if (delay > 0) {
             try {
                 Thread.currentThread();
@@ -23,6 +23,7 @@ public class HelloApiImpl implements HelloApi {
             }
         }
         System.out.println("Hello World!");
+        return "And You...";
     }
 
     @Override

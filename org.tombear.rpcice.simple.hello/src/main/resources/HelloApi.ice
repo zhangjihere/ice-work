@@ -34,7 +34,7 @@ module gen
 
     interface HelloApi
     {
-        idempotent void sayHello(int delay);
+        idempotent string sayHello(int delay);
         // Notes, the module parameter must be declared above.
         idempotent entity::ResultMsg process(entity::ProcessMsg procMsg);
         entity::Cp4ccStatus check(string sessionId);

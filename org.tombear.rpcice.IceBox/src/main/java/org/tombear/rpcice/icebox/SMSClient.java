@@ -23,7 +23,7 @@ public class SMSClient {
                 throw new Error("Invalid proxy");
             }
             System.out.print("send...");
-            smsService.sendSMS("Subscribe SMS!");
+            smsService.sendSMS("Subscribe SMS!", 0, 3);
             System.out.println(" OK!");
         } catch (Exception e) {
             e.printStackTrace();

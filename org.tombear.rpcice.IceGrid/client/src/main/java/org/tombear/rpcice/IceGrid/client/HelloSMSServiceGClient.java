@@ -30,7 +30,7 @@ public class HelloSMSServiceGClient {
             SMSServicePrx smsPrx = SMSServicePrx.checkedCast(smsObjPrx);
             SMSServicePrx smsPrxTwoWay = smsPrx.ice_twoway().ice_secure(false);
             System.out.printf("send...");
-            smsPrxTwoWay.sendSMS("See you, Boy!");
+            smsPrxTwoWay.sendSMS("See you, Boy!", 0, 5);
             System.out.println("Sms!");
 
         }

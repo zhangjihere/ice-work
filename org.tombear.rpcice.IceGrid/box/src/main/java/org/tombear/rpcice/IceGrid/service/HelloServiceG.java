@@ -29,12 +29,13 @@ public class HelloServiceG implements HelloApi, Service {
     private String name;
 
     @Override
-    public void sayHello(int delay, Current current) {
+    public String sayHello(int delay, Current current) {
         try {
             Thread.sleep(1000 * delay);
         } catch (InterruptedException ignore) {
         }
         logger.debug("Hello IceBox for Grid.--> {}", this.name);
+        return "And you...";
     }
 
     @Override

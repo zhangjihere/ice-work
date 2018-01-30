@@ -14,13 +14,13 @@ import org.tombear.rpcice.simple.hello.gen.entity.ResultMsg;
 public class HelloApiImpl2 implements HelloApi {
 
     @Override
-    public void sayHello(int delay, Current current) {
+    public String sayHello(int delay, Current current) {
         try {
-            Thread.sleep(delay*1000);
+            Thread.sleep(delay * 1000);
         } catch (InterruptedException ignore) {
         }
         System.out.println("Hello IceBox!");
-
+        return "And you...";
     }
 
     @Override

@@ -22,5 +22,6 @@
         <module>registry</module>
         <module>node</module>
         <module>box</module>
+        <module>client</module>
     </modules>
 </project>

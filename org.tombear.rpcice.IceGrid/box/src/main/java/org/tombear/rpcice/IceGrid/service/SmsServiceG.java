@@ -20,8 +20,13 @@ public class SmsServiceG implements SMSService, Service {
     private Logger logger = LoggerFactory.getLogger(SmsServiceG.class);
 
     @Override
-    public void sendSMS(String msg, Current current) {
+    public String sendSMS(String msg, int index, int delay, Current current) {
         logger.debug("receive sms: {}--> {}", msg, this.name);
+        try {
+            Thread.sleep(delay * 1000);
+        } catch (InterruptedException ignore) {
+        }
+        return "BingGo Sms. " + index;
     }
 
     @Override

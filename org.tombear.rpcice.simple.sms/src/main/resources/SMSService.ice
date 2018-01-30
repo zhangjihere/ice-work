@@ -6,6 +6,6 @@ module gen
 {   // below define the Ice generated code
     interface SMSService
     {
-        void sendSMS(string msg);
+        string sendSMS(string msg, int index, int delay);
     }
 }

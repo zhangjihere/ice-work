@@ -19,12 +19,13 @@ public class HelloServiceG2 extends AbstractIceBoxService implements HelloApi {
     private static Logger logger = LoggerFactory.getLogger(HelloServiceG2.class);
 
     @Override
-    public void sayHello(int delay, Current current) {
+    public String sayHello(int delay, Current current) {
         try {
             Thread.sleep(1000 * delay);
         } catch (InterruptedException ignore) {
         }
         logger.debug("Hello IceBox for Grid.--> {}", this.name);
+        return "And you...";
     }
 
     @Override

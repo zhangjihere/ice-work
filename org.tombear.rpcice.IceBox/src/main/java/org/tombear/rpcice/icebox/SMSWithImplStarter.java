@@ -42,15 +42,21 @@ public class SMSWithImplStarter implements SMSService, Service {
     }
 
     @Override
-    public void sendSMS(String msg, Current current) {
+    public String sendSMS(String msg, int index, int delay, Current current) {
         System.out.println("Hi SMS");
         if (msg.startsWith("Subscribe")) {
             System.out.print("  -->");
             ObjectPrx base = adapter.getCommunicator().stringToProxy("helloObj");
             HelloApiPrx helloApi = HelloApiPrx.checkedCast(base);
-            helloApi.sayHello(1);
+            String helloRtn = helloApi.sayHello(1);
+            System.out.println("helloRtn: " + helloRtn);
         } else {
             System.out.println("send normal SMS!");
         }
+        try {
+            Thread.sleep(delay * 1000);
+        } catch (InterruptedException ignore) {
+        }
+        return "BingGo Sms! " + index;
     }
 }
