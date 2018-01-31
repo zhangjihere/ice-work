@@ -23,15 +23,15 @@ public class HelloSMSServiceGClient {
             HelloApiPrx proxy = HelloApiPrx.checkedCast(objectPrx);
             HelloApiPrx helloTowWay = proxy.ice_twoway().ice_secure(false);
             System.out.printf("say... ");
-            helloTowWay.sayHello(1);
+            System.out.println(helloTowWay.sayHello(1));
             System.out.println("Hello!");
             //SmsService
             ObjectPrx smsObjPrx = communicator.stringToProxy("SMSServiceObj");
             SMSServicePrx smsPrx = SMSServicePrx.checkedCast(smsObjPrx);
             SMSServicePrx smsPrxTwoWay = smsPrx.ice_twoway().ice_secure(false);
             System.out.printf("send...");
-            smsPrxTwoWay.sendSMS("See you, Boy!", 0, 5);
-            System.out.println("Sms!");
+            System.out.println(smsPrxTwoWay.sendSMS("See you, Boy!", 0, 5));
+            System.out.println("ok");
 
         }
     }

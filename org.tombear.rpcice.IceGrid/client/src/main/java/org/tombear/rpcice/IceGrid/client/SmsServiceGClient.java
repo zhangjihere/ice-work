@@ -20,7 +20,7 @@ public class SmsServiceGClient {
             SMSServicePrx proxy = SMSServicePrx.checkedCast(objectPrx);
             SMSServicePrx towWay = proxy.ice_twoway().ice_secure(false);
             System.out.printf("send... ");
-            towWay.sendSMS("Hello Grid message!", 0, 5);
+            System.out.println(towWay.sendSMS("Hello Grid message!", 0, 3));
             System.out.println("OK!");
         }
     }

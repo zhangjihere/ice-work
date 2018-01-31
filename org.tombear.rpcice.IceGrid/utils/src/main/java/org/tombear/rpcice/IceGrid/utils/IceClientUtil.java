@@ -20,9 +20,10 @@ public class IceClientUtil {
     private static Map<Class<?>, ObjectPrx> cls2PrxMap = new HashMap<>();
     private static volatile long lastAccessTimestamp;
     private static volatile MonitorThread monitorThread;
-    private static long idleTimeOutSeconds;
     private static String iceLocator = null;
+    private static long idleTimeOutSeconds;
     private static final String locatorKey = "--Ice.Default.Locator";
+    private static final String idleTimeOutKey = "Idle.Timeout";
 
     //lazy loading Communicator
     public static Communicator getIceCommunicator() {
@@ -38,7 +39,7 @@ public class IceClientUtil {
                             e.printStackTrace();
                         }
                         iceLocator = props.getProperty(locatorKey);
-                        idleTimeOutSeconds = Integer.parseInt(props.getProperty("idleTimeOutSeconds"));
+                        idleTimeOutSeconds = Integer.parseInt(props.getProperty(idleTimeOutKey));
                         System.out.println("Ice client's locator is " + iceLocator + " proxy cache time out seconds: " + idleTimeOutSeconds);
                     }
                     String[] initParams = {locatorKey + "=" + iceLocator};
