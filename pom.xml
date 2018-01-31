@@ -89,6 +89,16 @@
                     </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-help-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
             <!-- execute 'mvn validate' to show default maven properties -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
