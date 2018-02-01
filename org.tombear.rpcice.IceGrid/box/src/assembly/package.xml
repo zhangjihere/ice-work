@@ -34,8 +34,9 @@
             <directory>${project.basedir}/src/main/resources</directory>
             <outputDirectory/>
             <includes>
-                <include>config.grid</include>
-                <include>config.grid.node</include>
+                <include>config.grid.registry</include>
+                <include>config.grid.node1</include>
+                <include>config.grid.node2</include>
                 <include>application*.xml</include>
             </includes>
         </fileSet>

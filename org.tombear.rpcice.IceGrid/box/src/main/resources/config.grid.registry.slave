@@ -1,0 +1,49 @@
+#
+# The IceGrid instance name.
+#
+IceGrid.InstanceName=DemoIceGrid
+
+
+#
+# IceGrid registry configuration.
+#
+Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061
+IceGrid.Registry.ReplicaName=ReplicaRegistry1
+IceGrid.Registry.Client.Endpoints=default  -p 4062
+IceGrid.Registry.Server.Endpoints=default
+IceGrid.Registry.Internal.Endpoints=default
+
+#
+# Enable the admin session manager for use with Glacier2.
+#
+IceGrid.Registry.AdminSessionManager.Endpoints=default -h localhost
+
+IceGrid.Registry.LMDB.Path=db/registry
+IceGrid.Registry.PermissionsVerifier=DemoIceGrid/NullPermissionsVerifier
+IceGrid.Registry.AdminPermissionsVerifier=DemoIceGrid/NullPermissionsVerifier
+IceGrid.Registry.SSLPermissionsVerifier=DemoIceGrid/NullSSLPermissionsVerifier
+IceGrid.Registry.AdminSSLPermissionsVerifier=DemoIceGrid/NullSSLPermissionsVerifier
+IceGrid.Registry.Discovery.Interface=127.0.0.1
+
+#
+# Trace properties.
+#
+IceGrid.Registry.Trace.Locator=1
+IceGrid.Registry.Trace.Admin=1
+IceGrid.Registry.Trace.Application=1
+IceGrid.Registry.Trace.Node=1
+IceGrid.Registry.Trace.Server=1
+IceGrid.Registry.Trace.Adapter=1
+IceGrid.Registry.Trace.Object=1
+IceGrid.Registry.Trace.Patch=1
+IceGrid.Registry.Trace.Replica=1
+IceGrid.Registry.Trace.Session=1
+
+#
+# Dummy username and password for icegridadmin.
+#
+IceGridAdmin.Username=foo
+IceGridAdmin.Password=bar
+
+# IceGrid Node system log file
+Ice.StdErr=log/ice.reg.stderr.log

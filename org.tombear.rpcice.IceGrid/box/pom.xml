@@ -25,8 +25,9 @@
                 <directory>src/main/resources</directory>
                 <excludes>
                     <exclude>application_*.xml</exclude>
-                    <exclude>config.grid</exclude>
-                    <exclude>config.grid.node</exclude>
+                    <exclude>config.grid.registry</exclude>
+                    <exclude>config.grid.node1</exclude>
+                    <exclude>config.grid.node2</exclude>
                     <exclude>config.iceboxG</exclude>
                     <exclude>config.service.helloG</exclude>
                     <exclude>config.service.smsG</exclude>
