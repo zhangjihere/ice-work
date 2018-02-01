@@ -14,13 +14,13 @@ public class EasyClient {
         HelloApiPrx helloApiPrx = IceClientUtil.getServicePrx(HelloApiPrx.class);
         helloApiPrx = helloApiPrx.ice_twoway().ice_secure(false);
         System.out.printf("helloooo...");
-        System.out.println(helloApiPrx.sayHello(5));
+        System.out.println(helloApiPrx.sayHello(3));
         System.out.println("ok!");
 
         SMSServicePrx smsServicePrx = IceClientUtil.getServicePrx(SMSServicePrx.class);
         smsServicePrx = smsServicePrx.ice_twoway().ice_secure(false);
         System.out.printf("sendooo...");
-        System.out.println(smsServicePrx.sendSMS("See you, Sir!", 0, 5));
+        System.out.println(smsServicePrx.sendSMS("See you, Sir!", 0, 2));
         System.out.println("Sms!");
     }
 }

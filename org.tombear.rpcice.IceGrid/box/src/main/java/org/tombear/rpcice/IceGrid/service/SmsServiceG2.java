@@ -15,7 +15,7 @@ import org.tombear.rpcice.simple.sms.gen.SMSService;
  * Created by ji.zhang on 1/29/18.
  */
 public class SmsServiceG2 extends AbstractIceBoxService implements SMSService {
-    private Logger logger = LoggerFactory.getLogger(SmsServiceG.class);
+    private static Logger logger = LoggerFactory.getLogger(SmsServiceG2.class);
 
     @Override
     public String sendSMS(String msg, int index, int delay, Current current) {

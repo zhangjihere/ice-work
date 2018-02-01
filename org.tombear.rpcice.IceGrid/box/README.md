@@ -1,13 +1,13 @@
 # README
 
 ## run the IceBox single please use follow command
-> unzip org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT-bin.zip  
-> cd org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT  
+> unzip org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT-bin.zip  
+> cd org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT  
 > java -cp 'lib/*' 'com.zeroc.IceBox.Server' --Ice.Config=config.iceboxG
 
 ## run the IceGrid with IceBox please use follow command
-> unzip org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT-bin.zip  
-> cd org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT  
+> unzip org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT-bin.zip  
+> cd org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT  
 > icegridnode --Ice.Config=config.grid  
 
 specify different application configuration
@@ -18,5 +18,5 @@ specify different application configuration
 ### Maven package and unzip, then test to run IceGrid with IceBox automatically
 > mvn clean package  
 run 
-> target/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT/restart_IceGrid.sh
-> target/org.tombear.rpcice.IceGrid-box-1.0.0-SNAPSHOT/restart_IceNode.sh
+> target/org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT/restart_IceGrid.sh
+> target/org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT/restart_IceNode.sh

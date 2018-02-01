@@ -13,9 +13,9 @@ Ice.StdOut=log/ice.stdout.log
 #
 # IceGrid registry configuration.
 #
-IceGrid.Registry.Client.Endpoints=default -h 109.105.4.159 -p 4061
-IceGrid.Registry.Server.Endpoints=default -h 109.105.4.159
-IceGrid.Registry.Internal.Endpoints=default -h 109.105.4.159
+#IceGrid.Registry.Client.Endpoints=default -h 109.105.4.159 -p 4061
+#IceGrid.Registry.Server.Endpoints=default -h 109.105.4.159
+#IceGrid.Registry.Internal.Endpoints=default -h 109.105.4.159
 
 #
 # Enable the admin session manager for use with Glacier2.

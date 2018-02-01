@@ -17,11 +17,11 @@
     <properties id="performance">
         <property name="Ice.MessageSizeMax" value="2048"/>
         <property name="Ice.ThreadPool.Server.Size" value="4"/>
-        <property name="Ice.ThreadPool.Server.SizeMax" value="40"/>
         <property name="Ice.ThreadPool.Server.SizeWarn" value="20"/>
+        <property name="Ice.ThreadPool.Server.SizeMax" value="40"/>
         <property name="Ice.ThreadPool.Client.Size" value="4"/>
-        <property name="Ice.ThreadPool.Client.SizeMax" value="40"/>
         <property name="Ice.ThreadPool.Client.SizeWarn" value="20"/>
+        <property name="Ice.ThreadPool.Client.SizeMax" value="40"/>
     </properties>
 
     <service-template id="HelloService">

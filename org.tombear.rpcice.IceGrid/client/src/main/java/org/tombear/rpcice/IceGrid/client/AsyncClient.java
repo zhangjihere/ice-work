@@ -1,12 +1,10 @@
 package org.tombear.rpcice.IceGrid.client;
 
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 
 import com.google.common.collect.Queues;
-
 
 import org.tombear.rpcice.IceGrid.utils.IceClientUtil;
 import org.tombear.rpcice.simple.hello.gen.HelloApiPrx;
@@ -20,7 +18,6 @@ import org.tombear.rpcice.simple.sms.gen.SMSServicePrx;
 public class AsyncClient {
 
     private static ConcurrentLinkedQueue<CompletableFuture<String>> stringResultQueue = Queues.newConcurrentLinkedQueue();
-    private static Random rand = new Random(9527);
 
     public static void main(String[] args) {
         HelloApiPrx helloApiPrx = IceClientUtil.getServicePrx(HelloApiPrx.class);
@@ -28,7 +25,7 @@ public class AsyncClient {
         helloApiPrx = helloApiPrx.ice_twoway().ice_secure(false);
         smsServicePrx = smsServicePrx.ice_twoway().ice_secure(false);
 
-        for (int i = 0, j = 1; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             stringResultQueue.add(helloApiPrx.sayHelloAsync(5));
             stringResultQueue.add(smsServicePrx.sendSMSAsync("Ok boy, ", i, 5));
         }

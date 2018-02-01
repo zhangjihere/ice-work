@@ -1,2 +1,21 @@
---Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061
-Idle.Timeout=300
+Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061
+
+# Set this option larger than 0, Ice Client can retrieve Endpoints info for Registry
+# by the time of timeout and then cache the Endpoints list.
+Ice.Default.LocatorCacheTimeout=300
+
+# This option avoid delaying the first invocation that follows expiry of a cache entry.
+Ice.BackgroundLocatorCacheUpdates=1
+
+Ice.ACM.Client.Timeout=600
+
+# Proxy Options
+#Ice.HTTPProxyHost=
+#Ice.HTTPProxyPort=
+#Ice.SOCKSProxyHost=
+#Ice.SOCKSProxyPort=
+
+# Thread Pool configuration
+Ice.ThreadPool.Client.Size=2
+Ice.ThreadPool.Client.SizeWarn=20
+Ice.ThreadPool.Client.SizeMax=40

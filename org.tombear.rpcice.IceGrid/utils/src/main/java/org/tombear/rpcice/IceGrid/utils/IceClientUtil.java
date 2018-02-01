@@ -1,13 +1,11 @@
 package org.tombear.rpcice.IceGrid.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.ObjectPrx;
+import com.zeroc.Ice.Properties;
 import com.zeroc.Ice.Util;
 
 /**
@@ -20,30 +18,21 @@ public class IceClientUtil {
     private static Map<Class<?>, ObjectPrx> cls2PrxMap = new HashMap<>();
     private static volatile long lastAccessTimestamp;
     private static volatile MonitorThread monitorThread;
-    private static String iceLocator = null;
-    private static long idleTimeOutSeconds;
-    private static final String locatorKey = "--Ice.Default.Locator";
-    private static final String idleTimeOutKey = "Idle.Timeout";
+    private static long clientTimeout;
+    private static final String locatorKey = "Ice.Default.Locator";
+    private static final String clientTimeoutKey = "Ice.ACM.Client.Timeout";
+    private static final String configFile = "config.client";
 
     //lazy loading Communicator
     public static Communicator getIceCommunicator() {
         if (ic == null) {
             synchronized (IceClientUtil.class) {
                 if (ic == null) {
-                    if (iceLocator == null) {
-//                        ResourceBundle rb = ResourceBundle.getBundle("config.client", Locale.ENGLISH);
-                        Properties props = new Properties();
-                        try (InputStream is = IceClientUtil.class.getClassLoader().getResourceAsStream("config.client")) {
-                            props.load(is);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        iceLocator = props.getProperty(locatorKey);
-                        idleTimeOutSeconds = Integer.parseInt(props.getProperty(idleTimeOutKey));
-                        System.out.println("Ice client's locator is " + iceLocator + " proxy cache time out seconds: " + idleTimeOutSeconds);
-                    }
-                    String[] initParams = {locatorKey + "=" + iceLocator};
-                    ic = Util.initialize(initParams);
+                    ic = Util.initialize(new String[]{"--Option=Value"}, configFile);
+                    Properties props = ic.getProperties();
+                    String iceLocator = props.getProperty(locatorKey);
+                    clientTimeout = Integer.parseInt(props.getProperty(clientTimeoutKey));
+                    System.out.println("Ice client's locator is " + iceLocator + " proxy cache time out seconds: " + clientTimeout);
                     createMonitorThread();
                 }
             }
@@ -139,7 +128,7 @@ public class IceClientUtil {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     Thread.sleep(5000L);
-                    if (lastAccessTimestamp + idleTimeOutSeconds * 1000L < System.currentTimeMillis()) {
+                    if (lastAccessTimestamp + clientTimeout * 1000L < System.currentTimeMillis()) {
                         closeCommunicator(true);
                     }
                 } catch (Exception e) {
