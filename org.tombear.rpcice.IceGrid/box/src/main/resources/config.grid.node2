@@ -6,7 +6,7 @@ IceGrid.InstanceName=DemoIceGrid
 #
 # The IceGrid locator proxy.
 #
-Ice.Default.Locator=DemoIceGrid/Locator:default -h 109.105.4.159 -p 4061
+Ice.Default.Locator=DemoIceGrid/Locator:default -h 109.105.4.159 -p 4061: tcp -h 109.105.5.212 -p 4062
 
 
 #

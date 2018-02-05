@@ -1,4 +1,4 @@
-Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061
+Ice.Default.Locator=DemoIceGrid/Locator:tcp -h 109.105.4.159 -p 4061: tcp -h 109.105.5.212 -p 4062
 
 # Set this option larger than 0, Ice Client can retrieve Endpoints info for Registry
 # by the time of timeout and then cache the Endpoints list.

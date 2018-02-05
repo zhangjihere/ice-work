@@ -8,7 +8,8 @@
 ## run the IceGrid with IceBox please use follow command
 > unzip org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT-bin.zip  
 > cd org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT  
-> icegridnode --Ice.Config=config.grid  
+> icegridregistry --Ice.Config=config.grid.registry
+> icegridnode --Ice.Config=config.grid.node1
 
 specify different application configuration
 > icegridadmin --Ice.Config=config.grid -e "application add application_advance.xml"

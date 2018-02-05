@@ -26,6 +26,7 @@
                 <excludes>
                     <exclude>application_*.xml</exclude>
                     <exclude>config.grid.registry</exclude>
+                    <exclude>config.grid.registry.slave</exclude>
                     <exclude>config.grid.node1</exclude>
                     <exclude>config.grid.node2</exclude>
                     <exclude>config.iceboxG</exclude>

@@ -16,10 +16,10 @@
     </properties>
     <properties id="performance">
         <property name="Ice.MessageSizeMax" value="2048"/>
-        <property name="Ice.ThreadPool.Server.Size" value="4"/>
+        <property name="Ice.ThreadPool.Server.Size" value="2"/>
         <property name="Ice.ThreadPool.Server.SizeWarn" value="20"/>
         <property name="Ice.ThreadPool.Server.SizeMax" value="40"/>
-        <property name="Ice.ThreadPool.Client.Size" value="4"/>
+        <property name="Ice.ThreadPool.Client.Size" value="2"/>
         <property name="Ice.ThreadPool.Client.SizeWarn" value="20"/>
         <property name="Ice.ThreadPool.Client.SizeMax" value="40"/>
     </properties>
@@ -69,7 +69,7 @@
             <properties>
                 <properties refid="trace"/>
                 <properties refid="performance"/>
-                <property name="IceBox.InheritProperties" value="1"/>
+                <!--<property name="IceBox.InheritProperties" value="1"/>-->
             </properties>
             <service-instance template="HelloService" name="Homer${id}">
                 <properties>

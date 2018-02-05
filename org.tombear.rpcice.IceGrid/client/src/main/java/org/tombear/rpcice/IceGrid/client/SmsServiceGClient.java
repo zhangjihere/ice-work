@@ -13,7 +13,7 @@ import org.tombear.rpcice.simple.sms.gen.SMSServicePrx;
  */
 public class SmsServiceGClient {
     public static void main(String[] args) {
-        String[] initParams = new String[]{"--Ice.Default.Locator=DemoIceGrid/Locator:tcp -h localhost -p 4061"};
+        String[] initParams = new String[]{"--Ice.Default.Locator=DemoIceGrid/Locator:tcp -h localhost -p 4061: tcp -h 109.105.5.212 -p 4062"};
         try (Communicator communicator = Util.initialize(initParams)) {
 //            ObjectPrx objectPrx = communicator.stringToProxy("HelloServiceG:tcp -h localhost -p 10000:udp -h localhost -p 10000");
             ObjectPrx objectPrx = communicator.stringToProxy("SmsGObject@SmsGAdapterId");
