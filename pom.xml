@@ -10,13 +10,6 @@
 
     <name>ice-work</name>
     <url>http://maven.apache.org</url>
-    <developers>
-        <developer>
-            <name>Ji Zhang</name>
-            <organization>Samsung</organization>
-            <email>ji.zhang@samsung.com</email>
-        </developer>
-    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
