@@ -3,16 +3,18 @@
 ICE_GRID="icegrid"
 ICE_GRID_NODE="icegridnode"
 
-echo "Stop IceGridNode and IceGridAdmin service..."
-ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
-kill -9 ${ID}
-
-echo "start slave-registry for IceGrid"
-icegridregistry --Ice.Config=config.grid.registry.slave &
-sleep 2
-
+cd ${project.build.directory}/${project.build.finalName}
+#echo "Stop IceGridNode and IceGridAdmin service..."
+##ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
+#ID=$(ps -ef | awk '/icegridregistry|icegridnode|IceBox/ {print $2}')
+#kill -9 ${ID}
+#
+#echo "start slave-registry for IceGrid"
+#icegridregistry --Ice.Config=config.grid.registry.slave &
+#sleep 1
+#
 echo "start a node in IceGrid"
-icegridnode --Ice.Config=config.grid.node2 &
+nohup  icegridnode --Ice.Config=config.grid.node2 > /dev/null &
 sleep 1
 
 echo "add advance application"

@@ -26,12 +26,13 @@
 
     <service-template id="HelloService">
         <parameter name="name"/>
+        <parameter name="port"/>
         <service name="${name}" entry="org.tombear.rpcice.IceGrid.service.HelloServiceG2">
             <description>A very simple service named after ${name}</description>
             <!-- service name, adapter name and adapter id are all specified the same. -->
             <adapter name="${name}"
                      id="${name}"
-                     endpoints="default"
+                     endpoints="default -p ${port}"
                      replica-group="HelloGroup"
                      server-lifetime="false"/>
             <properties>
@@ -59,10 +60,11 @@
 
     <server-template id="IceBoxServerTpl">
         <parameter name="id"/>
+        <parameter name="port"/>
         <icebox id="IceBoxServer${id}" exe="java" activation="on-demand">
             <description>A IceBox server template</description>
             <option>-server</option>
-            <option>-Xmx1024m</option>
+            <option>-Xmx512m</option>
             <option>-DBoxId=IceBox${id}</option>
             <option>-jar</option>
             <option>lib/org.tombear.rpcice.IceGrid.box-1.0.0-SNAPSHOT.jar</option>
@@ -71,9 +73,9 @@
                 <properties refid="performance"/>
                 <!--<property name="IceBox.InheritProperties" value="1"/>-->
             </properties>
-            <service-instance template="HelloService" name="Homer${id}">
+            <service-instance template="HelloService" name="Homer${id}" port="${port}">
                 <properties>
-                    <property name="cc" value="dd"/>
+                    <property name="service_cust" value="dd"/>
                 </properties>
             </service-instance>
             <service-instance template="SmsService" name="Sender${id}"/>

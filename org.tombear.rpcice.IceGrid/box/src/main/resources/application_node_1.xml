@@ -2,10 +2,15 @@
 <!-- This file was written by IceGrid Admin -->
 <icegrid>
     <application name="HelloBoy1">
+        <variable name="c_port1" value="10010"/>
         <include file="application_basic_tpl.xml"/>
         <node name="node1">
-            <server-instance template="IceBoxServerTpl" id="1"/>
-            <server-instance template="IceBoxServerTpl" id="2"/>
+            <server-instance template="IceBoxServerTpl" id="1" port="10010">
+                <properties><!-- useless ?! -->
+                    <property name="server_cust" value="1" />
+                </properties>
+            </server-instance>
+            <server-instance template="IceBoxServerTpl" id="2" port="10020"/>
         </node>
     </application>
 </icegrid>

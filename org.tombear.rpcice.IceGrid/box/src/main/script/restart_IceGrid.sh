@@ -2,19 +2,20 @@
 
 ICE_GRID="icegrid"
 ICE_GRID_REGISTRY="icegridregistry"
-ICE_GRID_NODE="icegridnode"
 
 cd ${project.build.directory}/${project.build.finalName}
 echo "Stop IceGridNode and IceGridAdmin service..."
-ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
+#ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
+ID=$(ps -ef | awk '/icegridregistry|icegridnode|IceBox/ {print $2}')
 kill -9 ${ID}
+
 
 echo "start registry for IceGrid"
 icegridregistry --Ice.Config=config.grid.registry &
-sleep 2
+sleep 1
 
 echo "start a node in IceGrid"
-icegridnode --Ice.Config=config.grid.node1 &
+nohup  icegridnode --Ice.Config=config.grid.node1 > /dev/null &
 sleep 1
 
 echo "add advance application"
