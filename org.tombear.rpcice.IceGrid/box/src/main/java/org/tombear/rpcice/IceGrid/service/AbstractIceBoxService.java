@@ -39,6 +39,11 @@ public abstract class AbstractIceBoxService implements Service {
         adapter.add(dispatchInterceptor, id);
         adapter.activate();
         logger.info(name + " service started, with param size " + args.length + " detail:" + Arrays.toString(args));
+
+        logger.debug(">>>AIBS>>>server_cust: {}", props.getProperty("server_cust"));
+        logger.debug(">>>AIBS>>>service_cust: {}", props.getProperty("service_cust"));
+        logger.debug(">>>AIBS>>>Service.Identity: {}", props.getProperty("Service.Identity"));
+        logger.debug(">>>AIBS>>>args: {}", Arrays.toString(args));
     }
 
     /**
