@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.tombear.rpcice.simple.recog</artifactId>
+    <artifactId>org.tombear.rpcice.simple.backend</artifactId>
     <packaging>jar</packaging>
 
-    <name>org.tombear.rpcice.simple.recog</name>
+    <name>org.tombear.rpcice.simple.backend</name>
     <url>http://maven.apache.org</url>
 
     <build>

@@ -173,6 +173,7 @@
         <module>org.tombear.rpcice.simple.client</module>
         <module>org.tombear.rpcice.simple.hello</module>
         <module>org.tombear.rpcice.simple.sms</module>
+        <module>org.tombear.rpcice.simple.backend</module>
         <module>org.tombear.rpcice.IceBox</module>
     </modules>
 </project>

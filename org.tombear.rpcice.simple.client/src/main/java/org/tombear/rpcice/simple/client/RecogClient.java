@@ -7,7 +7,7 @@ import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.ObjectPrx;
 import com.zeroc.Ice.Util;
 
-import org.tombear.rpcice.simple.recog.Cp4ccBackend.Cp4ccRecogApiPrx;
+import org.tombear.rpcice.simple.backend.RecogApiPrx;
 
 
 public class RecogClient {
@@ -33,8 +33,8 @@ public class RecogClient {
 
     private static int run(Communicator communicator) {
         ObjectPrx base = communicator.propertyToProxy("Cp4ccRecog.Proxy");
-        Cp4ccRecogApiPrx proxy = Cp4ccRecogApiPrx.checkedCast(base);// it has a rpc process for check, if improve performance, it can use uncheckCast
-        Cp4ccRecogApiPrx twoway = proxy.ice_twoway().ice_secure(false);
+        RecogApiPrx proxy = RecogApiPrx.checkedCast(base);// it has a rpc process for check, if improve performance, it can use uncheckCast
+        RecogApiPrx twoway = proxy.ice_twoway().ice_secure(false);
         if (twoway == null) {
             System.err.println("invalid proxy");
             return 1;
@@ -53,7 +53,7 @@ public class RecogClient {
         return 0;
     }
 
-    private static void runThread(int start, int interval, Cp4ccRecogApiPrx twoway) throws InterruptedException {
+    private static void runThread(int start, int interval, RecogApiPrx twoway) throws InterruptedException {
         Thread thread = new Thread(() -> {
             boolean accept;
             String sessionID = "Thread-" + start + "-sid-";
