@@ -12,7 +12,11 @@ Cp4ccRecog.Proxy=cp4ccRecog:tcp -p 10000:udp -p 10000
 #
 # Only connect to the localhost interface by default.
 #
-Ice.Default.Host=109.105.4.159
+Ice.Default.Host=52.78.35.146
+
+# Proxy Options
+Ice.HTTPProxyHost=109.105.4.159
+Ice.HTTPProxyPort=9527
 
 #
 # Warn about connection exceptions

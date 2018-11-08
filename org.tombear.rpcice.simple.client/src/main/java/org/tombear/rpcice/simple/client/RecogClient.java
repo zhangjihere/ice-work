@@ -40,10 +40,12 @@ public class RecogClient {
             return 1;
         }
 
-        int interval = 5;
+        int threadNum = 1;
+        int workNum = 1;
+
         try {
-            for (int i = 0; i < interval; i++) {
-                runThread(i, interval, twoway);
+            for (int i = 0; i < threadNum; i++) {
+                runThread(i, workNum, threadNum, twoway);
             }
             Thread.sleep(1000 * 60 * 5);
         } catch (InterruptedException e) {
@@ -53,12 +55,12 @@ public class RecogClient {
         return 0;
     }
 
-    private static void runThread(int start, int interval, RecogApiPrx twoway) throws InterruptedException {
+    private static void runThread(int start, int time, int interval, RecogApiPrx twoway) throws InterruptedException {
         Thread thread = new Thread(() -> {
             boolean accept;
-            String sessionID = "Thread-" + start + "-sid-";
-            for (int i = start; i < 50 * interval; i += interval) {
-                accept = twoway.acceptRequest(sessionID + i);
+            String sessionID = "71574e02-df55-4c91-9abb-ccc314467f55";
+            for (int i = start; i < time * interval; i += interval) {
+                accept = twoway.acceptRequest(sessionID);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {

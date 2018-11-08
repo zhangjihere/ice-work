@@ -6,7 +6,7 @@ ICE_GRID_REGISTRY="icegridregistry"
 cd ${project.build.directory}/${project.build.finalName}
 echo "Stop IceGridNode and IceGridAdmin service..."
 #ID=`ps -ef | grep ${ICE_GRID} | awk '{print $2}'`
-ID=$(ps -ef | awk '/icegridregistry|icegridnode|IceBox/ {print $2}')
+ID=$(ps -ef | awk '!/awk/ && /icegridregistry|icegridnode|IceBox/ {print $2}')
 kill -9 ${ID}
 
 
