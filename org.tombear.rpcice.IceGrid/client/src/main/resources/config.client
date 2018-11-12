@@ -10,8 +10,8 @@ Ice.BackgroundLocatorCacheUpdates=1
 Ice.ACM.Client.Timeout=300
 
 # Proxy Options
-#Ice.HTTPProxyHost=
-#Ice.HTTPProxyPort=
+#Ice.HTTPProxyHost=109.105.4.159
+#Ice.HTTPProxyPort=9527
 #Ice.SOCKSProxyHost=
 #Ice.SOCKSProxyPort=
 

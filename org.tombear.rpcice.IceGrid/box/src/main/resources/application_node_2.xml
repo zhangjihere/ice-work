@@ -3,9 +3,9 @@
 <icegrid>
     <application name="HelloBoy2">
         <include file="application_basic_tpl.xml"/>
-        <node name="node2">
-            <server-instance template="IceBoxServerTpl" id="3" port="10030"/>
-            <server-instance template="IceBoxServerTpl" id="4" port="10040"/>
+        <node name="node2"><!-- Must match IceGrid.Node.Name configuration -->
+            <server-instance template="IceBoxServerTpl" id="3" port="11030"/>
+            <server-instance template="IceBoxServerTpl" id="4" port="11040"/>
         </node>
     </application>
 </icegrid>

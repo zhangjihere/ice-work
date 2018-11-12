@@ -13,7 +13,7 @@ public class EasyRecogClient {
     public static void main(String[] args) {
         RecogApiPrx recogApiPrx = IceClientUtil.getServicePrx(RecogApiPrx.class);
         recogApiPrx = recogApiPrx.ice_twoway().ice_secure(false);
-        boolean b = recogApiPrx.acceptRequest("EasyRecog-1");
+        boolean b = recogApiPrx.acceptRequest("71574e02-df55-4c91-9abb-ccc314467f55");
         System.out.printf("accept: %b\n", b);
 
     }
